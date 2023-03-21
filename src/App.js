@@ -1,17 +1,19 @@
 
 import './App.css';
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var createReactClass = require('create-react-class');
 
-var NoLink = createReactClass({
+var WithoutLink = createReactClass({
+  mixins: [LinkedStateMixin],
   getInitialState: function() {
     return {message: 'Hello!'};
   },
-  handleChange: function(event) {
-    this.setState({message: event.target.value});
-  },
   render: function() {
-    var message = this.state.message;
-    return <input type="text" value={message} onChange={this.handleChange} />;
+    var valueLink = this.linkState('message');
+    var handleChange = function(e) {
+      valueLink.requestChange(e.target.value);
+    };
+    return <input type="text" value={valueLink.value} onChange={handleChange} />;
   }
 });
 
