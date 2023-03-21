@@ -1,36 +1,16 @@
+import React ,{useState } from  "react";
 
-import './App.css';
 
-
-export default function App() {
-  return (
-    <Toolbar
-      onPlayMovie={() => alert('Playing!')}
-      onUploadImage={() => alert('Uploading!')}
-    />
-  );
-}
-
-function Toolbar({ onPlayMovie, onUploadImage }) {
-  return (
+export default function FavoriteColor() {
+  const [color,setcolor]= useState("red") ;
+   return (
     <div>
-      <Button onClick={onPlayMovie}>
-        Play Movie
-      </Button>
-      <Button onClick={onUploadImage}>
-        Upload Image
-      </Button>
-    </div>
-  );
+      <h1> My Favorite color is {color} !</h1>
+
+<button type="button" onClick={() => setcolor("blue")}> Blue</button>    </div>
+  )
 }
 
-function Button({ onClick, children }) {
-  return (
-    <button onClick={onClick}>
-      {children}
-    </button>
-  );
-}
 
 
 
