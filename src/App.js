@@ -2,24 +2,35 @@
 import './App.css';
 
 
-function Profile() {
+export default function App() {
   return (
-    <img
-      src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+    <Toolbar
+      onPlayMovie={() => alert('Playing!')}
+      onUploadImage={() => alert('Uploading!')}
     />
   );
 }
 
-export default function Gallery() {
+function Toolbar({ onPlayMovie, onUploadImage }) {
   return (
-    <section>
-      <h1>Amazing scientists</h1>
-      <Profile />
-      <Profile />
-      <Profile />
-    </section>
+    <div>
+      <Button onClick={onPlayMovie}>
+        Play Movie
+      </Button>
+      <Button onClick={onUploadImage}>
+        Upload Image
+      </Button>
+    </div>
   );
 }
+
+function Button({ onClick, children }) {
+  return (
+    <button onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
 
 
